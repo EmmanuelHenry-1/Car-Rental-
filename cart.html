@@ -1,0 +1,388 @@
+<!-- STEP 3: FULL CART PAGE WITH PERFECT UI -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" >
+<title>Shopping Cart</title>
+
+<style>
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f6f6f6;
+  padding: 20px;
+  padding-top: 16rem;
+  
+  height:100%;
+ 
+  
+  background:url('./images/Roysloce.jpeg') center/cover no-repeat;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  
+  align-items:center;
+  
+
+
+}
+
+h1 { 
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+}
+
+/* Overlay */
+
+
+.cart, .summary{
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 18rem;
+}
+.summary {
+  height: 20rem;
+}
+
+/* HEADER */
+.cart-header {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 50px;
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+/* ITEM */
+.cart-item {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 50px;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.product {
+  display: flex;
+  gap: 10px;
+}
+
+.product img {
+  width: 60px;
+  border-radius: 10px;
+}
+
+.qty-box {
+  display: flex;
+  gap: 10px;
+}
+
+.qty-box button {
+  padding: 5px 10px;
+  background: #eee;
+  border-radius: 5px;
+}
+
+/* SUMMARY */
+
+.summary input {
+  width: 70%;
+  padding: 8px;
+  border-radius: 20px;
+  
+}
+
+.summary p, h3 {
+  padding: .8rem 1rem;
+}
+.summary p {
+  display: flex;
+  justify-content: space-between;
+}
+
+.checkout {
+  width: 100%;
+  padding: 15px;
+  background: black;
+  color: white;
+  border-radius: 30px;
+  margin-top: 20px;
+}
+
+button { border: none; cursor: pointer; }
+</style>
+</head>
+
+<body>
+    <!--  NAVBAR -->
+  <div class="add-cart">
+
+  
+  <nav>
+  <div class="logo">r<span class="primary-color">R</span>w</div>
+
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="#">Services</a></li>
+    <li><a href="#">Fleet</a></li>
+    <li><a href="#">FAQ</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+
+  <div class="right">
+    <div class="search-box">
+      <i class="fa fa-search"></i>
+      <input type="text" placeholder="Search...">
+    </div>
+    <div class="icon">
+      <i class="fa fa-user"></i>
+    </div>
+  </div>
+  <!-- Mobile nav -->
+   <div class="menu-toggle">
+  <i class="fa fa-bars"></i>
+</div>
+</nav>
+
+<h1>Shopping Cart</h1>
+
+<div class="container">
+
+<!-- CART -->
+<div class="cart">
+  <div class="cart-header">
+    <div>Product</div>
+    <div>Quantity</div>
+    <div>Total</div>
+    <div></div>
+  </div>
+
+  <div id="cart-items"></div>
+</div>
+
+<!-- SUMMARY -->
+<div class="summary">
+  <h3>Order Summary</h3>
+
+  <input type="text" placeholder="Discount voucher">
+  <button>Apply</button>
+
+  <p><span>Sub Total</span><span>$<span id="subtotal">0</span></span></p>
+  <p><span>Delivery</span><span>$50</span></p>
+
+  <h3><span>Total</span><span>$<span id="total">0</span></span></h3>
+
+  <!-- STEP 4 BUTTON -->
+  <button class="checkout" onclick="payWithPaystack()">Checkout Now</button>
+</div>
+
+</div>
+<footer class="footer">
+  
+  <div class="footer-container">
+    
+    <!-- LEFT SIDE -->
+    <div class="footer-left">
+      <h2 class="logo">r<span class="primary-color">R</span>w</h2>
+      <p>Subscribe to the newsletter</p>
+      
+      <div class="subscribe">
+        <input type="email" placeholder="Email...">
+        <button>→</button>
+      </div>
+    </div>
+    
+    <!-- COLUMN 1 -->
+    <div class="footer-col">
+      <h4>Top cities</h4>
+      <ul>
+        <li>New York</li>
+        <li>London</li>
+        <li>Berlin</li>
+        <li>Los Angeles</li>
+        <li>Paris</li>
+      </ul>
+    </div>
+    
+    <!-- COLUMN 2 -->
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <ul>
+        <li>Intercity rides</li>
+        <li>Limousine service</li>
+        <li>Chauffeur service</li>
+        <li>Private car service</li>
+        <li>Airport transfer</li>
+      </ul>
+    </div>
+    
+    <!-- COLUMN 3 -->
+    <div class="footer-col">
+      <h4>Intercity rides</h4>
+      <ul>
+        <li>East Hampton - New York</li>
+        <li>New York - Washington</li>
+        <li>New York - Philadelphia</li>
+        <li>Abu Dhabi - Dubai</li>
+        <li>London - Birmingham</li>
+      </ul>
+    </div>
+    
+  </div>
+  
+  <!-- BOTTOM BAR -->
+  <div class="footer-bottom">
+    <p>©️ 2023 rRw.</p>
+    
+    <div class="links">
+      <a href="#">Terms</a>
+      <a href="#">Privacy policy</a>
+      <a href="#">Legal notice</a>
+      <a href="#">Accessibility</a>
+    </div>
+    
+   <div class="socials">
+  <a href="https://www.youtube.com/" target="_blank">
+    <i class="fab fa-youtube"></i>
+  </a>
+  
+  <a href="https://www.facebook.com/" target="_blank">
+    <i class="fab fa-facebook-f"></i>
+  </a>
+  
+  <a href="https://twitter.com/" target="_blank">
+    <i class="fab fa-twitter"></i>
+  </a>
+  
+  <a href="https://www.instagram.com/" target="_blank">
+    <i class="fab fa-instagram"></i>
+  </a>
+  
+  <a href="https://www.linkedin.com/" target="_blank">
+    <i class="fab fa-linkedin-in"></i>
+  </a>
+</div>
+  </div>
+  
+</footer>
+
+<script>
+
+// STEP 2 SCRIPT (AUTO ADD)
+const params = new URLSearchParams(window.location.search);
+const name = params.get("name");
+const price = params.get("price");
+const img = params.get("img");
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+if (name && price) {
+  let existing = cart.find(item => item.name === name);
+
+  if (existing) {
+    existing.qty += 1;
+  } else {
+    cart.push({
+      name,
+      price: Number(price),
+      img,
+      qty: 1
+    });
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  window.history.replaceState({}, document.title, "cart.html");
+}
+
+// RENDER CART
+function renderCart() {
+  let container = document.getElementById("cart-items");
+  container.innerHTML = "";
+  let subtotal = 0;
+
+  cart.forEach((item, index) => {
+    let total = item.price * item.qty;
+    subtotal += total;
+
+    container.innerHTML += `
+      <div class="cart-item">
+        <div class="product">
+          <img src="${item.img}">
+          <div>
+            <strong>${item.name}</strong><br>
+            $${item.price}
+          </div>
+        </div>
+
+        <div class="qty-box">
+          <button onclick="changeQty(${index}, -1)">-</button>
+          ${item.qty}
+          <button onclick="changeQty(${index}, 1)">+</button>
+        </div>
+
+        <div>$${total}</div>
+
+        <button onclick="removeItem(${index})">🗑️</button>
+      </div>
+    `;
+  });
+
+  document.getElementById("subtotal").innerText = subtotal;
+  document.getElementById("total").innerText = subtotal + 50;
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+function changeQty(i, change) {
+  cart[i].qty += change;
+  if (cart[i].qty < 1) cart[i].qty = 1;
+  renderCart();
+}
+
+function removeItem(i) {
+  cart.splice(i, 1);
+  renderCart();
+}
+
+renderCart();
+
+
+// 🔴 STEP 4 — REAL PAYMENT (PAYSTACK)
+
+function payWithPaystack() {
+  let total = document.getElementById("total").innerText;
+
+  let handler = PaystackPop.setup({
+    key: "YOUR_PUBLIC_KEY_HERE", // 🔥 PUT YOUR PAYSTACK KEY
+    email: "customer@email.com",
+    amount: total * 100,
+    currency: "NGN",
+
+    callback: function(response) {
+      alert("Payment Successful ✅ Ref: " + response.reference);
+      localStorage.removeItem("cart");
+      window.location.href = "index.html";
+    },
+
+    onClose: function() {
+      alert("Payment Cancelled");
+    }
+  });
+
+  handler.openIframe();
+}
+</script>
+
+<script src="script.js"></script>
+</div>
+
+</body>
+</html>
